@@ -1,0 +1,894 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// Custom styles for code highlighting
+.highlight {
+  background: #282c34 !important;
+  border-radius: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+  // Remove inner padding and borders
+  padding: 0;
+  border: none;
+  
+  code {
+    background: none !important;
+    padding: 0;
+    white-space: pre;
+    word-wrap: normal;
+    color: #abb2bf;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+  
+  // Line numbers styling
+  .lineno {
+    color: #5c6370;
+    background: #21252b;
+    padding: 0.5rem;
+    border-right: 1px solid #3e4451;
+    user-select: none;
+    text-align: right;
+    min-width: 2rem;
+  }
+  
+  // Syntax highlighting colors for dark theme
+  .c { color: #5c6370; font-style: italic; } // Comments
+  .k { color: #c678dd; } // Keywords
+  .kd { color: #c678dd; } // Keyword declarations
+  .s { color: #98c379; } // Strings
+  .s2 { color: #98c379; } // String literals
+  .se { color: #56b6c2; } // String escapes
+  .si { color: #98c379; } // String interpolation
+  .n { color: #abb2bf; } // Names
+  .nf { color: #61afef; } // Function names
+  .nc { color: #e5c07b; } // Class names
+  .nb { color: #e06c75; } // Built-in names
+  .m { color: #d19a66; } // Numbers
+  .mi { color: #d19a66; } // Integers
+  .mf { color: #d19a66; } // Floats
+  .o { color: #56b6c2; } // Operators
+  .p { color: #abb2bf; } // Punctuation
+  .nt { color: #e06c75; } // HTML tags
+  .na { color: #d19a66; } // HTML attributes
+}
+
+// Inline code styling
+code {
+  background: #f1f1f1 !important;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  word-break: break-word;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  
+  @at-root .dark-skin & {
+    background: #3e4451 !important;
+    color: #abb2bf;
+  }
+}
+
+// Pre formatted text - simplified
+pre {
+  background: #282c34 !important;
+  border-radius: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  
+  code {
+    background: none !important;
+    padding: 0;
+    color: #abb2bf;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+}
+
+// Code block improvements - remove nested styling
+.highlighter-rouge {
+  .highlight {
+    background: #282c34 !important;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: none;
+    padding: 0;
+    
+    pre {
+      background: none !important;
+      margin: 0;
+      padding: 1rem;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+}
+
+// Fenced code blocks with language labels - improved styling
+.highlighter-rouge {
+  position: relative;
+  
+  // Extract language from class name and display as label
+  &[class*="language-"] {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #21252b;
+      color: #abb2bf;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75em;
+      border-radius: 0 8px 0 4px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      z-index: 10;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    &:hover:before {
+      opacity: 1;
+    }
+  }
+  
+  // Python
+  &.language-python:before {
+    content: "Python";
+  }
+  
+  // JavaScript
+  &.language-javascript:before {
+    content: "JavaScript";
+  }
+  
+  // Java
+  &.language-java:before {
+    content: "Java";
+  }
+  
+  // C++
+  &.language-cpp:before,
+  &.language-cxx:before {
+    content: "C++";
+  }
+  
+  // C
+  &.language-c:before {
+    content: "C";
+  }
+  
+  // Go
+  &.language-go:before {
+    content: "Go";
+  }
+  
+  // Rust
+  &.language-rust:before {
+    content: "Rust";
+  }
+  
+  // TypeScript
+  &.language-typescript:before {
+    content: "TypeScript";
+  }
+  
+  // HTML
+  &.language-html:before {
+    content: "HTML";
+  }
+  
+  // CSS
+  &.language-css:before {
+    content: "CSS";
+  }
+  
+  // SCSS
+  &.language-scss:before {
+    content: "SCSS";
+  }
+  
+  // JSON
+  &.language-json:before {
+    content: "JSON";
+  }
+  
+  // YAML
+  &.language-yaml:before,
+  &.language-yml:before {
+    content: "YAML";
+  }
+  
+  // XML
+  &.language-xml:before {
+    content: "XML";
+  }
+  
+  // SQL
+  &.language-sql:before {
+    content: "SQL";
+  }
+  
+  // Shell/Bash
+  &.language-bash:before,
+  &.language-shell:before,
+  &.language-sh:before {
+    content: "Shell";
+  }
+  
+  // PowerShell
+  &.language-powershell:before {
+    content: "PowerShell";
+  }
+  
+  // PHP
+  &.language-php:before {
+    content: "PHP";
+  }
+  
+  // Ruby
+  &.language-ruby:before {
+    content: "Ruby";
+  }
+  
+  // Swift
+  &.language-swift:before {
+    content: "Swift";
+  }
+  
+  // Kotlin
+  &.language-kotlin:before {
+    content: "Kotlin";
+  }
+  
+  // Dockerfile
+  &.language-dockerfile:before {
+    content: "Dockerfile";
+  }
+  
+  // Markdown
+  &.language-markdown:before,
+  &.language-md:before {
+    content: "Markdown";
+  }
+  
+  // Python
+  &.language-python:before {
+    content: "Python";
+  }
+  
+  // R
+  &.language-r:before {
+    content: "R";
+  }
+  
+  // Scala
+  &.language-scala:before {
+    content: "Scala";
+  }
+  
+  // Perl
+  &.language-perl:before {
+    content: "Perl";
+  }
+  
+  // Haskell
+  &.language-haskell:before {
+    content: "Haskell";
+  }
+  
+  // Dart
+  &.language-dart:before {
+    content: "Dart";
+  }
+  
+  // Lua
+  &.language-lua:before {
+    content: "Lua";
+  }
+  
+  // VB.NET
+  &.language-vb:before,
+  &.language-vbnet:before {
+    content: "VB.NET";
+  }
+  
+  // C#
+  &.language-csharp:before,
+  &.language-cs:before {
+    content: "C#";
+  }
+  
+  // JSX
+  &.language-jsx:before {
+    content: "JSX";
+  }
+  
+  // TSX
+  &.language-tsx:before {
+    content: "TSX";
+  }
+  
+  // Vue
+  &.language-vue:before {
+    content: "Vue";
+  }
+  
+  // Svelte
+  &.language-svelte:before {
+    content: "Svelte";
+  }
+  
+  // MATLAB
+  &.language-matlab:before {
+    content: "MATLAB";
+  }
+  
+  // Text/Plain
+  &.language-text:before,
+  &.language-plain:before {
+    content: "Text";
+  }
+  
+  // Default for any other language - simplified
+  &[class*="language-"]:not([class*="language-python"]):not([class*="language-javascript"]):not([class*="language-java"]):not([class*="language-cpp"]):not([class*="language-c"]):not([class*="language-go"]):not([class*="language-rust"]):not([class*="language-typescript"]):not([class*="language-html"]):not([class*="language-css"]):not([class*="language-scss"]):not([class*="language-json"]):not([class*="language-yaml"]):not([class*="language-xml"]):not([class*="language-sql"]):not([class*="language-bash"]):not([class*="language-shell"]):not([class*="language-php"]):not([class*="language-ruby"]):not([class*="language-swift"]):not([class*="language-kotlin"]):not([class*="language-dockerfile"]):not([class*="language-markdown"]):not([class*="language-r"]):not([class*="language-scala"]):not([class*="language-perl"]):not([class*="language-haskell"]):not([class*="language-dart"]):not([class*="language-lua"]):not([class*="language-vb"]):not([class*="language-csharp"]):not([class*="language-jsx"]):not([class*="language-tsx"]):not([class*="language-vue"]):not([class*="language-svelte"]):not([class*="language-matlab"]):not([class*="language-text"]):before {
+    content: "Code";
+  }
+}
+
+// Improve table styling for line numbers - minimal spacing (1 space)
+.highlight table {
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  tbody tr {
+    border: none;
+  }
+  
+  td {
+    padding: 0;
+    border: none;
+    vertical-align: top;
+    
+    &.gutter {
+      background: #21252b;
+      width: auto;
+      border-right: 1px solid #3e4451;
+      
+      .lineno {
+        color: #5c6370;
+        padding: 0.5rem 0.25rem 0.5rem 0.2rem; // 한 칸 간격
+        margin: 0;
+        border: none;
+        display: block;
+        text-align: right;
+        min-width: 1rem;
+        font-size: 0.8em;
+        width: auto;
+      }
+    }
+    
+    &.code {
+      background: #282c34;
+      padding: 0.5rem 1rem 0.5rem 0.25rem; // 한 칸 간격
+      width: 100%;
+      border-left: none !important;
+      
+      pre {
+        background: none !important;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none !important;
+      }
+    }
+  }
+}
+
+// Fine-tune line number spacing - exactly one space
+.highlight table {
+  border-spacing: 0;
+  
+  td.gutter {
+    padding-right: 0.25rem !important; // 한 칸 간격
+    width: auto !important;
+    
+    .lineno {
+      padding-right: 0.25rem !important; // 한 칸 패딩
+      padding-left: 0.2rem !important;
+      min-width: 1rem !important;
+      width: auto !important;
+    }
+  }
+  
+  td.code {
+    padding-left: 0.25rem !important; // 한 칸 간격
+  }
+}
+
+// Remove any additional spacing - controlled spacing
+.highlight .gutter {
+  margin-right: 0 !important;
+  padding-right: 0.25rem !important;
+}
+
+.highlight .code {
+  margin-left: 0 !important;
+  padding-left: 0.25rem !important;
+}
+
+// Remove all unnecessary borders in code blocks
+.highlight {
+  * {
+    border-left: none !important;
+    border-right: none !important;
+  }
+  
+  table td.gutter {
+    border-right: 1px solid #3e4451 !important;
+  }
+  
+  table td.code {
+    border-left: none !important;
+  }
+}
+
+// Ensure no duplicate borders
+.highlight pre,
+.highlight code,
+.highlight table,
+.highlight tbody,
+.highlight tr {
+  border: none !important;
+}
+
+// Responsive code blocks
+@media (max-width: 768px) {
+  .highlight,
+  pre {
+    border-radius: 4px;
+    padding: 0.8rem;
+    font-size: 0.8em;
+  }
+}
+
+// Responsive width adjustments
+@media (max-width: 768px) {
+  .page__content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    p, li, blockquote {
+      max-width: 100%;
+    }
+  }
+  
+  .highlight,
+  pre {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .page__content {
+    p, li, blockquote {
+      max-width: 700px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .page__content {
+    p, li, blockquote {
+      max-width: 900px;
+    }
+  }
+}
+
+// Remove minimal-mistakes default max-width restrictions
+.page__content .archive__item-excerpt,
+.page__content .archive__item-body {
+  max-width: none !important;
+}
+
+// Custom styles for category and tag pages
+.archive__item {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  @at-root .dark-skin & {
+    border-color: #3e4451;
+  }
+}
+
+.archive__item-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    
+    &:hover {
+      color: #61afef;
+      text-decoration: underline;
+    }
+    
+    @at-root .dark-skin & {
+      &:hover {
+        color: #61afef;
+      }
+    }
+  }
+}
+
+.archive__item-date {
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
+  
+  @at-root .dark-skin & {
+    color: #abb2bf;
+  }
+  
+  time {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+}
+
+.entries-list {
+  .archive__item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+      padding-left: 1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-radius: 4px;
+      
+      @at-root .dark-skin & {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+}
+
+// Home page post list hover effects
+.list__item {
+  .archive__item {
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    margin: 0 -1rem;
+    border-radius: 4px;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+      padding-left: 1rem;
+      padding-right: 1rem;
+      
+      @at-root .dark-skin & {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+}
+
+// Archive page general hover effects
+.archive__item-teaser {
+  transition: all 0.3s ease;
+}
+
+.archive__item:hover {
+  .archive__item-teaser {
+    transform: scale(1.02);
+  }
+  
+  .archive__item-title a {
+    color: #61afef !important;
+  }
+}
+
+// Subtle hover effects for all post listings
+.entries-list .archive__item,
+.list__item .archive__item,
+.archive .archive__item {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    right: -1rem;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    
+    @at-root .dark-skin & {
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+  
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// Smooth color transitions for post titles
+.archive__item-title a {
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #61afef !important;
+    text-decoration: none;
+  }
+}
+
+// Increase content width for better readability
+.page__content {
+  max-width: 1200px !important;
+  
+  @media (min-width: 80em) {
+    max-width: 1400px !important;
+  }
+}
+
+// Optimize text width for better reading experience
+.page__content {
+  // Remove restrictive max-width on text content
+  .archive__item-excerpt,
+  .page__content-inner {
+    max-width: none !important;
+  }
+  
+  // Improve paragraph width
+  p {
+    max-width: 900px;
+    line-height: 1.6;
+  }
+  
+  // Better list formatting
+  ul, ol {
+    max-width: 900px;
+    
+    li {
+      max-width: none;
+      line-height: 1.6;
+    }
+  }
+  
+  // Wider code blocks for better code readability
+  .highlight,
+  pre,
+  code {
+    max-width: 100% !important;
+  }
+  
+  // Tables should use full width
+  table {
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+
+// Adjust container width for better content flow
+.masthead__inner-wrap,
+.page__footer-follow .social-icons,
+.page__footer-copyright {
+  max-width: 1400px;
+}
+
+// Increase main content area width
+.page {
+  @media (min-width: 80em) {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+// Adjust sidebar width ratio
+.page__inner-wrap {
+  @media (min-width: 80em) {
+    .page__content {
+      float: left;
+      width: calc(100% - 300px);
+    }
+    
+    .page__meta,
+    .page__share {
+      float: left;
+      width: calc(100% - 300px);
+    }
+  }
+}
+
+// Increase article content width specifically
+.single .page__content {
+  max-width: none !important;
+  
+  p, li, blockquote, .highlight {
+    max-width: 1000px;
+  }
+}
+
+// Better spacing for wide screens
+@media (min-width: 1200px) {
+  .page__content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+// Adjust font sizes for better content density
+.page__content {
+  font-size: 0.9em; // 기본 폰트 크기를 10% 줄임
+  line-height: 1.6;
+  
+  // 헤딩 크기 조정
+  h1 { font-size: 1.8em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.3em; }
+  h4 { font-size: 1.1em; }
+  h5 { font-size: 1.0em; }
+  h6 { font-size: 0.9em; }
+  
+  // 본문 텍스트 (10% 작게)
+  p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-bottom: 1.2em;
+  }
+  
+  // 리스트 아이템 (10% 작게)
+  li {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+  
+  // 인용문 (10% 작게)
+  blockquote {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+}
+
+// 코드 블록 폰트 크기 - 원래 크기로 복원
+.highlight {
+  font-size: 1em; // 원래 크기
+  line-height: 1.5;
+  
+  code {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+// 인라인 코드 폰트 크기 - 원래 크기로 복원
+code {
+  font-size: 0.9em; // 원래 크기
+}
+
+// pre 태그 폰트 크기 - 원래 크기로 복원
+pre {
+  font-size: 1em; // 원래 크기
+  line-height: 1.5;
+}
+
+// 테이블 폰트 크기 조정
+table {
+  font-size: 0.9em;
+  
+  th, td {
+    font-size: inherit;
+  }
+}
+
+// 반응형 폰트 크기 조정
+@media (max-width: 768px) {
+  .page__content {
+    font-size: 0.95em; // 모바일에서는 조금 더 큰 크기
+    
+    p {
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+    
+    li {
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+    
+    // 코드 블록은 원래 크기 유지
+    .highlight,
+    pre {
+      font-size: 1em;
+    }
+    
+    code {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .page__content {
+    font-size: 0.92em; // 태블릿에서는 중간 크기
+    
+    p, li {
+      font-size: 0.92em;
+    }
+    
+    // 코드 블록은 원래 크기 유지
+    .highlight,
+    pre {
+      font-size: 1em;
+    }
+    
+    code {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .page__content {
+    font-size: 0.9em; // 데스크톱에서는 10% 작게
+    
+    p, li {
+      font-size: 0.9em;
+    }
+    
+    // 코드 블록은 원래 크기 유지
+    .highlight,
+    pre {
+      font-size: 1em;
+    }
+    
+    code {
+      font-size: 0.9em;
+    }
+  }
+}
+
+// 아카이브 페이지 폰트 크기 조정
+.archive__item-title {
+  font-size: 1.1em;
+}
+
+.archive__item-excerpt {
+  font-size: 0.9em;
+}
+
+.archive__item-date {
+  font-size: 0.85em;
+}

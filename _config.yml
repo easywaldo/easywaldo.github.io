@@ -9,8 +9,8 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: "My Blog"
-email: your-email@example.com
+title: "Easywaldo's Blog"
+email: acetious@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   안녕하세요! 저의 블로그에 오신 것을 환영합니다. 
   이곳에서 다양한 이야기를 나누고 싶습니다.
@@ -23,11 +23,36 @@ github_username: ""
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+# Show future posts
+future: true
+
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul
+
+# Code highlighting settings
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    line_numbers: true
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 include:
   - _pages
@@ -62,22 +87,21 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Your Name"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "안녕하세요! 개발자입니다."
+  name   : "Easywaldo"
+  bio    : "개발자 Easywaldo 입니다."
   links:
-    - label: "Website"
+    - label: ""
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: ""
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/easywaldo"
 
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/easywaldo"
 
 defaults:
   # _posts
