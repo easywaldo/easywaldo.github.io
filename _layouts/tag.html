@@ -3,7 +3,7 @@ layout: archive
 ---
 
 <div class="tag-header">
-  <h1 class="page__title">
+  <h1 class="tag__title">
     <i class="fas fa-tag" aria-hidden="true"></i> {{ page.tag }}
   </h1>
 </div>
@@ -62,17 +62,29 @@ layout: archive
 </div>
 
 <style>
+.page__title {
+  display: none !important;
+}
+
 .tag-header {
   margin-bottom: 2rem;
 }
 
-.tag-header h1 {
+.tag__title {
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: white !important;
 }
 
-.dark-skin .tag-header h1 {
-  color: #ecf0f1;
+.tag__title i {
+  color: white !important;
+}
+
+.dark-skin .tag__title {
+  color: white !important;
+}
+
+.dark-skin .tag__title i {
+  color: white !important;
 }
 
 .archive__item-categories,

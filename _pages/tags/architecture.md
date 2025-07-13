@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "Architecture 태그의 포스트들"
+title: "Architecture"
 tag: "Architecture"
 permalink: /tags/architecture/
 ---

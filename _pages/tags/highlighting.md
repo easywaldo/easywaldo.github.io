@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "highlighting 태그의 포스트들"
+title: "highlighting"
 tag: "highlighting"
 permalink: /tags/highlighting/
 ---

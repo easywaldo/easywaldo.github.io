@@ -95,11 +95,8 @@ plugins:
 
 author:
   name   : "Easywaldo"
-  bio    : "소프트웨어 엔지니어 입니다."
+  bio    : ""
   links:
-    - label: ""
-      icon: "fas fa-fw fa-link"
-      url: ""
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/easywaldo"

@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "syntax 태그의 포스트들"
+title: "syntax"
 tag: "syntax"
 permalink: /tags/syntax/
 ---

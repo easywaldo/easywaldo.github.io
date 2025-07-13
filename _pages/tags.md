@@ -13,8 +13,6 @@ author_profile: true
 {% endfor %}
 
 <div class="tags-cloud">
-  <p class="page__lead">전체 {{ site.tags.size }}개의 태그가 있습니다.</p>
-  
   <div class="taxonomy__index">
     {% for i in (1..tags_max) reversed %}
       {% for tag in site.tags %}
@@ -44,20 +42,25 @@ author_profile: true
 .taxonomy__item {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.3rem;
-  padding: 0.4rem 0.8rem;
+  min-width: 115px;
+  height: 24px;
+  padding: 0 0.6rem;
   background: #f8f9fa;
-  border-radius: 20px;
+  color: white;
   text-decoration: none;
-  color: #495057;
+  border-radius: 20px;
   border: 1px solid #dee2e6;
   transition: all 0.3s ease;
-  font-size: 0.9em;
+  font-weight: 500;
+  font-size: 0.8em;
+  box-sizing: border-box;
 }
 
 .taxonomy__item:hover {
   background: #e9ecef;
-  color: #212529;
+  color: white;
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -65,15 +68,19 @@ author_profile: true
 
 .taxonomy__name {
   font-weight: 500;
+  letter-spacing: 0.3px;
+  color: white;
+  white-space: nowrap;
 }
 
 .taxonomy__count {
   background: #6c757d;
   color: white;
-  padding: 0.1rem 0.4rem;
-  border-radius: 10px;
-  font-size: 0.8em;
+  padding: 0.08rem 0.35rem;
+  border-radius: 8px;
+  font-size: 0.75em;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Dark theme styles */
@@ -97,16 +104,45 @@ author_profile: true
 /* Dark skin compatibility */
 .dark-skin .taxonomy__item {
   background: #343a40;
-  color: #f8f9fa;
+  color: white;
   border-color: #495057;
 }
 
 .dark-skin .taxonomy__item:hover {
   background: #495057;
-  color: #ffffff;
+  color: white;
+}
+
+.dark-skin .taxonomy__name {
+  color: white;
 }
 
 .dark-skin .taxonomy__count {
   background: #6c757d;
+  color: white;
+}
+
+/* Animation for smooth entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.taxonomy__item {
+  animation: fadeInUp 0.5s ease;
+}
+
+.taxonomy__item:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.taxonomy__item:nth-child(even) {
+  animation-delay: 0.2s;
 }
 </style>

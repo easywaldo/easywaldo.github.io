@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "minimal-mistakes 태그의 포스트들"
+title: "minimal-mistakes"
 tag: "minimal-mistakes"
 permalink: /tags/minimal-mistakes/
 ---

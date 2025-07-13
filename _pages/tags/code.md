@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "code 태그의 포스트들"
+title: "code"
 tag: "code"
 permalink: /tags/code/
 ---

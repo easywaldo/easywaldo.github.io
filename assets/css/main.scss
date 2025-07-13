@@ -970,3 +970,58 @@ table {
 .back-to-top.show {
   animation: fadeInUp 0.3s ease;
 }
+
+// Custom layout adjustments - move content to left
+.page__inner-wrap {
+  margin-left: -5rem !important;
+  margin-right: auto !important;
+  max-width: calc(100% + 5rem) !important;
+}
+
+.sidebar.sticky {
+  margin-left: -5rem !important;
+}
+
+.masthead__inner-wrap {
+  margin-left: -5rem !important;
+  margin-right: auto !important;
+  max-width: calc(100% + 5rem) !important;
+}
+
+// Site title positioning adjustment
+.site-title {
+  margin-left: 5rem !important;
+  position: relative;
+  z-index: 10;
+}
+
+.page__footer {
+  margin-left: -5rem !important;
+  margin-right: auto !important;
+  max-width: calc(100% + 5rem) !important;
+}
+
+// Adjust main content area
+.page {
+  margin-left: 0 !important;
+  padding-left: 1rem !important;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .page__inner-wrap,
+  .sidebar.sticky,
+  .masthead__inner-wrap,
+  .page__footer {
+    margin-left: -2rem !important;
+    max-width: calc(100% + 2rem) !important;
+  }
+  
+  .site-title {
+    margin-left: 1rem !important;
+  }
+  
+  .page {
+    padding-left: 2rem !important;
+  }
+}

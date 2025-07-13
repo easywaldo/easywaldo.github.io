@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "Event Sourcing 태그의 포스트들"
+title: "Event Sourcing"
 tag: "Event Sourcing"
 permalink: /tags/event-sourcing/
 ---

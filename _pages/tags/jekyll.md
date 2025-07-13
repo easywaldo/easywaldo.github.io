@@ -1,6 +1,6 @@
 ---
 layout: tag
-title: "jekyll 태그의 포스트들"
+title: "jekyll"
 tag: "jekyll"
 permalink: /tags/jekyll/
 ---
