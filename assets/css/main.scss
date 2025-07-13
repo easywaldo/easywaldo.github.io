@@ -995,33 +995,97 @@ table {
   z-index: 10;
 }
 
-.page__footer {
-  margin-left: -5rem !important;
-  margin-right: auto !important;
-  max-width: calc(100% + 5rem) !important;
-}
-
-// Adjust main content area
-.page {
+// Custom comments styling - align with main content
+.page__comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #3e4451;
   margin-left: 0 !important;
-  padding-left: 1rem !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .page__inner-wrap,
-  .sidebar.sticky,
-  .masthead__inner-wrap,
-  .page__footer {
-    margin-left: -2rem !important;
-    max-width: calc(100% + 2rem) !important;
-  }
+.page__comments-title {
+  color: #61afef;
+  font-size: 1.2em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3e4451;
+  margin-left: 0;
+}
+
+// Disqus comments styling
+#disqus_thread {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid #3e4451;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// Related posts styling alignment - now aligned with main content
+.page__related {
+  margin-top: 3rem;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   
-  .site-title {
-    margin-left: 1rem !important;
-  }
+  // Override any default positioning
+  position: relative;
+  left: 0 !important;
+  right: auto !important;
+  width: 100% !important;
+}
+
+.page__related-title {
+  margin-left: 0 !important;
+  color: #61afef;
+  font-size: 1.3em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3e4451;
+  padding-left: 0 !important;
+}
+
+.page__related .grid__wrapper {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+// Force related posts alignment - additional override
+.page__inner-wrap .page__related {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
   
-  .page {
-    padding-left: 2rem !important;
-  }
+  // Force container behavior
+  display: block !important;
+  clear: both !important;
+}
+
+// Ensure grid wrapper follows the same alignment
+.page__inner-wrap .page__related .grid__wrapper {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+// Override any archive-single positioning within related posts
+.page__inner-wrap .page__related .archive__item {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }

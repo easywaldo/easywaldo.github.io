@@ -26,6 +26,9 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 # Show future posts
 future: true
 
+# Environment
+environment: production
+
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -100,6 +103,16 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/easywaldo"
+
+# Comments
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "easywaldo-1"
+
+# Development settings
+development:
+  comments: true
 
 footer:
   links:
