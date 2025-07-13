@@ -1,0 +1,159 @@
+---
+layout: archive
+---
+
+<div class="tag-header">
+  <h1 class="page__title">
+    <i class="fas fa-tag" aria-hidden="true"></i> {{ page.tag }}
+  </h1>
+</div>
+
+{% assign posts = site.tags[page.tag] %}
+{% if posts.size > 0 %}
+<div class="taxonomy__section">
+  <div class="entries-list">
+    {% for post in posts %}
+      <article class="archive__item">
+        <h3 class="archive__item-title">
+          <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
+        </h3>
+        {% if post.excerpt %}
+          <p class="archive__item-excerpt">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+        {% endif %}
+        <p class="archive__item-date">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y년 %m월 %d일" }}</time>
+        </p>
+        {% if post.categories.size > 0 %}
+          <p class="archive__item-categories">
+            <strong>카테고리:</strong>
+            {% for category in post.categories %}
+              <a href="/categories/{{ category | slugify }}/" class="category-link">{{ category }}</a>
+            {% endfor %}
+          </p>
+        {% endif %}
+        {% if post.tags.size > 1 %}
+          <p class="archive__item-tags">
+            <strong>태그:</strong>
+            {% for tag in post.tags %}
+              {% unless tag == page.tag %}
+                <a href="/tags/{{ tag | slugify }}/" class="tag-link">{{ tag }}</a>
+              {% endunless %}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="taxonomy__section">
+  <div class="no-posts">
+    <p>아직 이 태그에 해당하는 포스트가 없습니다.</p>
+  </div>
+</div>
+{% endif %}
+
+<div class="taxonomy__nav">
+  <p>
+    <a href="/tags/" class="btn btn--primary">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i> 모든 태그 보기
+    </a>
+  </p>
+</div>
+
+<style>
+.tag-header {
+  margin-bottom: 2rem;
+}
+
+.tag-header h1 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.dark-skin .tag-header h1 {
+  color: #ecf0f1;
+}
+
+.archive__item-categories,
+.archive__item-tags {
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+}
+
+.archive__item-categories strong,
+.archive__item-tags strong {
+  color: #6c757d;
+}
+
+.dark-skin .archive__item-categories strong,
+.dark-skin .archive__item-tags strong {
+  color: #95a5a6;
+}
+
+.category-link,
+.tag-link {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  margin: 0.1rem;
+  background: #e9ecef;
+  color: #495057;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 0.8em;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.category-link:hover,
+.tag-link:hover {
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.dark-skin .category-link,
+.dark-skin .tag-link {
+  background: #34495e;
+  color: #ecf0f1;
+  border-color: #2c3e50;
+}
+
+.dark-skin .category-link:hover,
+.dark-skin .tag-link:hover {
+  background: #3498db;
+  color: white;
+}
+
+.taxonomy__nav {
+  margin-top: 3rem;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.dark-skin .taxonomy__nav {
+  border-top-color: #495057;
+}
+
+.no-posts {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.dark-skin .no-posts {
+  color: #95a5a6;
+}
+
+.archive__item-excerpt {
+  margin-top: 0.5rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.dark-skin .archive__item-excerpt {
+  color: #95a5a6;
+}
+</style>

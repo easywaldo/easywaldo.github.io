@@ -566,9 +566,6 @@ pre {
     
     &:hover {
       background-color: rgba(255, 255, 255, 0.03);
-      padding-left: 1rem;
-      margin-left: -1rem;
-      margin-right: -1rem;
       border-radius: 4px;
       
       @at-root .dark-skin & {
@@ -578,18 +575,16 @@ pre {
   }
 }
 
-// Home page post list hover effects
+// Home page post list hover effects - fixed alignment
 .list__item {
   .archive__item {
     transition: all 0.3s ease;
     padding: 1rem 0;
-    margin: 0 -1rem;
+    margin: 0;
     border-radius: 4px;
     
     &:hover {
       background-color: rgba(255, 255, 255, 0.03);
-      padding-left: 1rem;
-      padding-right: 1rem;
       
       @at-root .dark-skin & {
         background-color: rgba(255, 255, 255, 0.05);
@@ -613,7 +608,7 @@ pre {
   }
 }
 
-// Subtle hover effects for all post listings
+// Subtle hover effects for all post listings - fixed alignment
 .entries-list .archive__item,
 .list__item .archive__item,
 .archive .archive__item {
@@ -623,8 +618,8 @@ pre {
     content: '';
     position: absolute;
     top: 0;
-    left: -1rem;
-    right: -1rem;
+    left: 0;
+    right: 0;
     bottom: 0;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 4px;
@@ -891,4 +886,87 @@ table {
 
 .archive__item-date {
   font-size: 0.85em;
+}
+
+// Back to Top floating button
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  
+  &:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+    color: white;
+    text-decoration: none;
+  }
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  i {
+    font-size: 16px;
+  }
+}
+
+// Dark theme compatibility
+.dark-skin .back-to-top {
+  background: #61afef;
+  box-shadow: 0 4px 12px rgba(97, 175, 239, 0.3);
+  
+  &:hover {
+    background: #4a9eff;
+    box-shadow: 0 6px 16px rgba(97, 175, 239, 0.4);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+    
+    i {
+      font-size: 14px;
+    }
+  }
+}
+
+// Animation for smooth entrance
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.back-to-top.show {
+  animation: fadeInUp 0.3s ease;
 }

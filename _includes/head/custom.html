@@ -1,0 +1,82 @@
+<!-- Custom Back to Top Button Script -->
+<script>
+// Back to Top Button functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Create back to top button
+  const backToTopButton = document.createElement('a');
+  backToTopButton.href = '#';
+  backToTopButton.className = 'back-to-top';
+  backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  backToTopButton.setAttribute('aria-label', '맨 위로 가기');
+  backToTopButton.setAttribute('title', '맨 위로 가기');
+  
+  // Add button to page
+  document.body.appendChild(backToTopButton);
+  
+  // Show/hide button based on scroll position
+  let isVisible = false;
+  
+  function toggleBackToTop() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > 300 && !isVisible) {
+      backToTopButton.classList.add('show');
+      isVisible = true;
+    } else if (scrollTop <= 300 && isVisible) {
+      backToTopButton.classList.remove('show');
+      isVisible = false;
+    }
+  }
+  
+  // Throttle scroll event for better performance
+  let ticking = false;
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(toggleBackToTop);
+      ticking = true;
+    }
+  }
+  
+  function handleScroll() {
+    ticking = false;
+    requestTick();
+  }
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Smooth scroll to top when button is clicked
+  backToTopButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Smooth scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Focus management for accessibility
+    const pageTitle = document.querySelector('h1') || document.querySelector('.page__title');
+    if (pageTitle) {
+      pageTitle.setAttribute('tabindex', '-1');
+      pageTitle.focus();
+      // Remove tabindex after focus to restore normal behavior
+      setTimeout(() => {
+        pageTitle.removeAttribute('tabindex');
+      }, 100);
+    }
+  });
+  
+  // Keyboard accessibility
+  backToTopButton.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      backToTopButton.click();
+    }
+  });
+  
+  // Initial check
+  toggleBackToTop();
+});
+</script>

@@ -17,7 +17,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ""
-github_username: ""
+github_username: "easywaldo"
 
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes"
@@ -56,6 +56,13 @@ kramdown:
 
 include:
   - _pages
+  - _pages/tags
+
+# Collections
+collections:
+  tag_pages:
+    output: true
+    permalink: /tags/:name/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -88,7 +95,7 @@ plugins:
 
 author:
   name   : "Easywaldo"
-  bio    : "개발자 Easywaldo 입니다."
+  bio    : "소프트웨어 엔지니어 입니다."
   links:
     - label: ""
       icon: "fas fa-fw fa-link"
