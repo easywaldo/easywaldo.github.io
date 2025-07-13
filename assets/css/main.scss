@@ -457,32 +457,48 @@ pre {
   border: none !important;
 }
 
-// Responsive code blocks
+// Responsive code blocks - 모바일 최적화
 @media (max-width: 768px) {
   .highlight,
   pre {
     border-radius: 4px;
-    padding: 0.8rem;
     font-size: 0.8em;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0.8rem;
+  }
+  
+  .page__content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
-// Responsive width adjustments
+// Responsive width adjustments - 모바일 최적화
 @media (max-width: 768px) {
   .page__content {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     
     p, li, blockquote {
       max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   
   .highlight,
   pre {
-    margin-left: -1rem;
-    margin-right: -1rem;
-    border-radius: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 4px;
+  }
+  
+  // 모바일에서 전체 폭 사용
+  .page {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
@@ -940,7 +956,7 @@ table {
   }
 }
 
-// Responsive design
+// Responsive design - 모바일 최적화
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 20px;
@@ -952,6 +968,12 @@ table {
     i {
       font-size: 14px;
     }
+  }
+  
+  // 모바일에서 화면 가장자리 여백 확보
+  body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -1088,4 +1110,164 @@ table {
 .page__inner-wrap .page__related .archive__item {
   margin-left: 0 !important;
   padding-left: 0 !important;
+}
+
+// Mobile responsive adjustments - 모바일에서 좌측 이동 취소
+@media (max-width: 768px) {
+  .page__inner-wrap,
+  .sidebar.sticky,
+  .masthead__inner-wrap {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .site-title {
+    margin-left: 0 !important;
+    padding-left: 1rem !important;
+  }
+  
+  .page {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-left: 0 !important;
+  }
+  
+  .page__content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  // 모바일에서 사이드바 숨기기
+  .sidebar {
+    display: none !important;
+  }
+  
+  // 모바일에서 전체 폭 사용
+  .page__inner-wrap {
+    width: 100% !important;
+  }
+  
+  .page__footer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  // 모바일에서 네비게이션 개선
+  .masthead {
+    .masthead__inner-wrap {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+  }
+  
+  // 모바일에서 메인 콘텐츠 영역 조정
+  #main {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  // 모바일에서 아티클 영역 조정
+  .page {
+    width: 100% !important;
+    float: none !important;
+  }
+  
+  // 모바일에서 댓글 영역 조정
+  .page__comments {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  #disqus_thread {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  // 모바일에서 관련 포스트 영역 조정
+  .page__related {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .page__related .grid__wrapper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+// 태블릿 환경에서의 조정
+@media (max-width: 1024px) and (min-width: 769px) {
+  .page__inner-wrap,
+  .sidebar.sticky,
+  .masthead__inner-wrap {
+    margin-left: -2rem !important;
+    max-width: calc(100% + 2rem) !important;
+  }
+  
+  .site-title {
+    margin-left: 2rem !important;
+  }
+  
+  .page {
+    padding-left: 2rem !important;
+  }
+  
+  .page__footer {
+    margin-left: -2rem !important;
+    max-width: calc(100% + 2rem) !important;
+  }
+}
+
+// 모바일에서 터치 이벤트 최적화
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// 텍스트 선택 허용
+p, li, blockquote, h1, h2, h3, h4, h5, h6, pre, code, 
+.page__content, .archive__item-title, .archive__item-excerpt {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+// 모바일에서 스크롤 최적화
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+// 모바일에서 폰트 크기 조정 방지
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// 모바일에서 호버 효과 개선
+@media (hover: hover) {
+  .archive__item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+// 터치 디바이스에서 호버 효과 비활성화
+@media (hover: none) {
+  .archive__item:hover {
+    background-color: transparent;
+  }
 }
