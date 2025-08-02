@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "이벤트소싱과 마이크로서비스 아키텍쳐 스터디"
+title: "이벤트소싱과 마이크로서비스 아키텍쳐 스터디 제 1장"
 date: 2025-07-12 21:00:00 +0900
 categories:
   - Event Sourcing
